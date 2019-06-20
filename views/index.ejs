@@ -1,28 +1,31 @@
 <% include partials/header %>
 
-<div class="ui main container header">
-    <h1>All blogs </h1>
+<div class="ui main container text">
+    <div class="ui huge header">All blogs </div>
 </div>
 
-<div class="ui">
-<% blogs.forEach((blog)=>{%>
-    <div class="ui">
-        <div class="ui image">
-            <img src="<%= blog.image%>"> 
+<div class="ui top container">
+<div class="ui items divided segment">
+    <% blogs.forEach((blog)=>{%>
+        <div class="item segment">
+            <div class="image">
+                <img src="<%= blog.image%>"> 
+            </div>
+            <div class="content">
+                <a class="header" href="/blogs/<%= blog._id%>"><%= blog.title%></a>
+                <div class="meta">
+                    <span><%= blog.added.toDateString()%></span>
+                </div>
+                <div class="description">
+                    <p><%- blog.desc.substring(0,100)%>...</p> 
+                </div>
+                <div class="ui button">
+                    <a href="/blogs/<%= blog._id%>">More...</a>
+                </div>
+            </div>
         </div>
-        <div class="ui header">
-            <a href="/blogs/<%= blog._id%>"><%= blog.title%></a>
-        </div>
-        <div class="ui content">
-            <span><%= blog.added.toDateString()%></span>
-        </div>
-        <div>
-            <p><%- blog.desc.substring(0,100)%>...</p> 
-        </div>
-        
-        <a href="/blogs/<%= blog._id%>">More...</a>
-    </div>
-<% })%>
+    <% })%>
+</div>
 </div>
 
 <% include partials/footer %>
