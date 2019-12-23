@@ -5,6 +5,11 @@ var express= require("express"),
     methodOverride = require("method-override"),
     expressSanitizer = require("express-sanitizer");
     
+
+    mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 //connecting to db
 mongoose.connect("mongodb://localhost/restfulBlogApp"); 
 
@@ -117,6 +122,6 @@ app.delete("/blogs/:id", (req,res)=>{
     });
 });
 
-app.listen(process.env.PORT, process.env.IP, ()=>{
-    console.log("Server is running at port "+ process.env.PORT);
+app.listen(8080, '127.0.0.1', ()=>{
+    console.log("Server is running at port 8080");
 });

@@ -12,9 +12,15 @@ i.icon{
 
 #footertext{
     background:grey;
-    margin-bottom:0px; 
-    margin-top:5px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
     color:white;
     padding:2px;
     text-align:center;
+}
+
+#footertext span{
+    color:red;
+    font-size: large;
 }
