@@ -123,6 +123,6 @@ app.delete("/blogs/:id", (req,res)=>{
     });
 });
 
-app.listen(8080, '127.0.0.1', ()=>{
-    console.log("Server is running at port 8080");
+app.listen(80, '0.0.0.0', ()=>{
+    console.log("Server Started");
 });
