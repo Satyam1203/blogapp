@@ -1,3 +1,5 @@
+const server = require('http').createServer();
+
 var express= require("express"),
     app= express(),
     bodyParser= require("body-parser"),
@@ -126,3 +128,5 @@ app.delete("/blogs/:id", (req,res)=>{
 app.listen(80, '0.0.0.0', ()=>{
     console.log("Server Started");
 });
+
+server.listen(3000);
