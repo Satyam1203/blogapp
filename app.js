@@ -5,7 +5,7 @@ var express= require("express"),
     methodOverride = require("method-override"),
     expressSanitizer = require("express-sanitizer");
 
-const checksum_lib = require('./checksum/checksum.js');
+// const checksum_lib = require('./checksum/checksum.js');
 
     mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
