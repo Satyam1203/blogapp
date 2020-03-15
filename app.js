@@ -4,15 +4,25 @@ var express= require("express"),
     mongoose= require("mongoose"),
     methodOverride = require("method-override"),
     expressSanitizer = require("express-sanitizer");
-
+const PORT = process.env.PORT || 3000;
+var uriString = process.env.MONGODB_URI || 
+                process.env.MONGOLAB_URI ||
+                process.env.MONGOHQ_URL ||
+                'mongodb+srv://hello123:hello123@cluster0-oh8rj.mongodb.net/test?retryWrites=true&w=majority';
 // const checksum_lib = require('./checksum/checksum.js');
 
-    mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useUnifiedTopology', true);
+//     mongoose.set('useNewUrlParser', true);
+// mongoose.set('useFindAndModify', false);
+// mongoose.set('useCreateIndex', true);
+// mongoose.set('useUnifiedTopology', true);
 //connecting to db
-mongoose.connect("mongodb://localhost/restfulBlogApp"); 
+mongoose.connect(uriString, {useNewUrlParser: true, useUnifiedTopology: true}, function (err, res) {
+    if (err) {
+    console.log ('ERROR connecting to: ' + uriString + '. ' + err);
+    } else {
+    console.log ('Succeeded connected to: ' + uriString);
+    }
+  }); 
 
 app.set("view engine","ejs"); 
 app.use(express.static("public"));
@@ -123,6 +133,6 @@ app.delete("/blogs/:id", (req,res)=>{
     });
 });
 
-app.listen(80, '0.0.0.0', ()=>{
-    console.log("Server Started");
+app.listen(PORT, ()=>{
+    console.log("Server Started at :"+PORT);
 });
